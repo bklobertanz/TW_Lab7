@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>Listado de Clientes</title>
+		<meta charset="utf-8">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	    <link rel="stylesheet" href="css/normalize.css">
+	    <link rel="stylesheet" href="../css/normalize.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,16 +35,35 @@
 	<div class="container m-5">
 		<h2 class="mb-3">Listado de Clientes</h2>
 		<p>A continuación, se muestran los Clientes inscritos:</p>
-		<!--tabla-->
-		<table class="table-striped">
-			
+		<table id="tabla-ver" class="table table-striped">
+			<tr>
+				<th>Rut</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Correo Electrónico</th>
+			</tr>	
+		</table>
+		<h2 class="mb-3">Pedidos de un Cliente</h2>
+		<p>Ingrese el rut del Cliente, cuyos pedidos desea consultar:</p>
+		<label for="">Rut Cliente</label>
+		<input id="input-rut" class="form-control " type="text" placeholder="Ejemplo: 1111111-1">
+		<input class="mt-3" id="btn-consultar-pedidos" type="button" value="Consultar">	
+
+		<table id="tabla-pedidos" class="table table-striped mt-3">
+			<tr>
+				<th>Rut</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Correo Electrónico</th>
+			</tr>	
 		</table>
 	</div>
 	<footer>
 		<span>Desarrollado por Diego Valencia y Barís Klobertanz</span>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>
