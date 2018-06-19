@@ -14,7 +14,8 @@ $(document).ready(()=>{
 
 			let datos = $.parseJSON(res);
 			let tabla = $("#tabla-ver");
-			let select = $("#select-rut-clientes");
+			let selectMod = $("#select-rut-modificar-clientes");
+			let selectElim = $("#select-rut-eliminar-clientes")
 
 			for(let i=0 ; i<datos.length ; i++){
 
@@ -22,9 +23,44 @@ $(document).ready(()=>{
 									    + datos[i][nombre] + "</td><td>"
 									   	+ datos[i][apellido] + "</td><td>"
 									   	+ datos[i][correo] + "</td></tr>");
-				select.append("<option>" + datos[i][rut] +  "</option>");
+				selectMod.append("<option>" + datos[i][rut] +  "</option>");
+				selectElim.append("<option>" + datos[i][rut] +  "</option>");
 			}
 		}
+	});
+
+	$("#btn-modificar-clientes").click(()=>{
+
+		let rut = $("#select-rut-modificar-clientes").val();
+
+		$.ajax({
+
+			url: url_base + "api/Cliente.php?peticion=ver&rut=" + rut,
+			type: 'GET',
+			dataType: 'json',
+			success:(res)=>{
+
+				console.log(res);
+
+			},
+			error: function(jqXHR, exception) {
+	            if (jqXHR.status === 0) {
+	                alert('Not connect.n Verify Network.');
+	            } else if (jqXHR.status == 404) {
+	                alert('Requested page not found. [404]');
+	            } else if (jqXHR.status == 500) {
+	                alert('Internal Server Error [500].');
+	            } else if (exception === 'parsererror') {
+	                alert('Requested JSON parse failed.');
+	            } else if (exception === 'timeout') {
+	                alert('Time out error.');
+	            } else if (exception === 'abort') {
+	                alert('Ajax request aborted.');
+	            } else {
+	                alert('Uncaught Error.n' + jqXHR.responseText);
+	            }
+        	}
+		});
 	});
 	$("#btn-consultar-pedidos").click(()=>{
 
@@ -48,22 +84,22 @@ $(document).ready(()=>{
 				}
 			}, 
 			 error: function(jqXHR, exception) {
-            if (jqXHR.status === 0) {
-                alert('Not connect.n Verify Network.');
-            } else if (jqXHR.status == 404) {
-                alert('Requested page not found. [404]');
-            } else if (jqXHR.status == 500) {
-                alert('Internal Server Error [500].');
-            } else if (exception === 'parsererror') {
-                alert('Requested JSON parse failed.');
-            } else if (exception === 'timeout') {
-                alert('Time out error.');
-            } else if (exception === 'abort') {
-                alert('Ajax request aborted.');
-            } else {
-                alert('Uncaught Error.n' + jqXHR.responseText);
-            }
-        }
+	            if (jqXHR.status === 0) {
+	                alert('Not connect.n Verify Network.');
+	            } else if (jqXHR.status == 404) {
+	                alert('Requested page not found. [404]');
+	            } else if (jqXHR.status == 500) {
+	                alert('Internal Server Error [500].');
+	            } else if (exception === 'parsererror') {
+	                alert('Requested JSON parse failed.');
+	            } else if (exception === 'timeout') {
+	                alert('Time out error.');
+	            } else if (exception === 'abort') {
+	                alert('Ajax request aborted.');
+	            } else {
+	                alert('Uncaught Error.n' + jqXHR.responseText);
+	            }
+        	}
 		});
 	});
 
@@ -107,7 +143,7 @@ $(document).ready(()=>{
 
 	$("#btn-eliminar-clientes").click(()=>{
 
-		let rutEliminar = $("#select-rut-clientes").val();
+		let rutEliminar = $("#select-rut-eliminar-clientes").val();
 		$.ajax({
 
 			url : url_base + "api/Cliente.php?peticion=eliminar&rut=" + rutEliminar,

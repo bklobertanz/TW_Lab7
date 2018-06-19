@@ -36,18 +36,36 @@
 	<div class="container m-5">
 		
 		<h2 class="mb-3">Modificar Clientes</h2>
-		<p></p>
+		<p>Seleccione el rut del cliente que desea modificar:</p>
+		<div id="div-modificar" class="form-group">
+	    	<select id="select-rut-modificar-clientes" class="form-control" >
+	    	</select>
+  		</div>
+
+  		<p>
+		  <button id = "btn-modificar-clientes" type="button"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		    Seleccionar
+		  </button>
+		</p>
+		<div class="collapse" id="collapseExample">
+		  <div class="card card-body">
+				<label for="">Nombre</label>
+				<input  id="input-modificar-nombre" class="form-control" type="text">
+				<label for="">Apellido</label>
+				<input  id="input-modificar-apellido" class="form-control" type="text">
+				<label for="">Correo Electrónico</label>
+				<input  id="input-modificar-correo" class="form-control" type="text">
+				<input id ="btn-modificar-cliente" class="mt-3" type="button" value="Modificar">	
+		  </div> 
+		</div>
+
 		<h2 class="mb-3">Eliminar Clientes</h2>
-		<p>Seleccione el rut del cliente que desea eliminar</p>
+		<p>Seleccione el rut del cliente que desea eliminar:</p>
 		<div class="form-group">
-	    	<label>Rut de Clientes:</label>
-	    	<select id="select-rut-clientes" class="form-control" >
+	    	<select id="select-rut-eliminar-clientes" class="form-control" >
 	    	</select>
 	    	<input id="btn-eliminar-clientes"class="mt-3" type="button" value="Eliminar">
   		</div>
-
-
-		
 	</div>
 	<footer>
 		<span>Desarrollado por Diego Valencia y Barís Klobertanz</span>
