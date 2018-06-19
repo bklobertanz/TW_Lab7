@@ -11,8 +11,10 @@ $(document).ready(()=>{
 		url: url_base + "api/Cliente.php?peticion=obtenerLista",
 		success:(res)=>{
 			
+
 			let datos = $.parseJSON(res);
 			let tabla = $("#tabla-ver");
+			let select = $("#select-rut-clientes");
 
 			for(let i=0 ; i<datos.length ; i++){
 
@@ -20,6 +22,7 @@ $(document).ready(()=>{
 									    + datos[i][nombre] + "</td><td>"
 									   	+ datos[i][apellido] + "</td><td>"
 									   	+ datos[i][correo] + "</td></tr>");
+				select.append("<option>" + datos[i][rut] +  "</option>");
 			}
 		}
 	});
@@ -99,6 +102,19 @@ $(document).ready(()=>{
                 alert('Uncaught Error.n' + jqXHR.responseText);
             }
         }
+		});
+	});
+
+	$("#btn-eliminar-clientes").click(()=>{
+
+		let rutEliminar = $("#select-rut-clientes").val();
+		$.ajax({
+
+			url : url_base + "api/Cliente.php?peticion=eliminar&rut=" + rutEliminar,
+			success:(res)=>{
+
+				alert("Eliminado cliente " + rutEliminar);
+			}
 		});
 	});
 });
