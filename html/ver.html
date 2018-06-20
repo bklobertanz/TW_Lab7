@@ -44,18 +44,15 @@
 			</tr>	
 		</table>
 		<h2 class="mb-3">Pedidos de un Cliente</h2>
-		<p>Ingrese el rut del Cliente, cuyos pedidos desea consultar:</p>
-		<label for="">Rut Cliente</label>
-		<input id="input-rut" class="form-control " type="text" placeholder="Ejemplo: 1111111-1">
+		<p>Seleccione el rut del Cliente, cuyos pedidos desea consultar:</p>
+		<label for="">Rut Clientes</label>
+		<div id="div-consultar-pedidos" class="form-group">
+	    	<select id="select-consultar-pedidos" class="form-control" >
+	    	</select>
+  		</div>
 		<input class="mt-3" id="btn-consultar-pedidos" type="button" value="Consultar">	
 
 		<table id="tabla-pedidos" class="table table-striped mt-3">
-			<tr>
-				<th>Rut</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Correo Electrónico</th>
-			</tr>	
 		</table>
 	</div>
 	<footer>

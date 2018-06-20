@@ -17,6 +17,7 @@ $(document).ready(()=>{
 			let selectMod = $("#select-rut-modificar-clientes");
 			let selectElim = $("#select-rut-eliminar-clientes")
 			let selectPedi = $("#select-rut-pedido");
+			let selectConsPedi =$("#select-consultar-pedidos");
 
 
 			for(let i=0 ; i<datos.length ; i++){
@@ -28,6 +29,7 @@ $(document).ready(()=>{
 				selectMod.append("<option>" + datos[i][rut] +  "</option>");
 				selectElim.append("<option>" + datos[i][rut] +  "</option>");
 				selectPedi.append("<option>" + datos[i][rut] +  "</option>");
+				selectConsPedi.append("<option>" + datos[i][rut] +  "</option>");
 			}
 		}
 	});
@@ -116,24 +118,25 @@ $(document).ready(()=>{
 	});
 	$("#btn-consultar-pedidos").click(()=>{
 
-		let inputRut = $("#input-rut").val();
-		console.log(inputRut);
+		let inputRut = $("#select-consultar-pedidos").val();
+		let tabla = $("#tabla-pedidos");
+		tabla.empty();
 		$.ajax({
 
-			url: url_base + "api/Cliente.php?peticion=ver&rut=" + inputRut,
+
+
+			url: url_base + "api/Pedidos.php?peticion=obtenerLista&rut=" + inputRut,
 			success :(res)=>{
 
-				let datos = $.parseJSON(res);
-				console.log(datos);
-				let tabla = $("#tabla-pedidos");
+				let datos = JSON.parse(res);
+
+				tabla.append("<tr><th>Valor Total Pedido</th><th>Fecha Pedido</th>");	
 
 				for(let i=0 ; i<datos.length ; i++){
 
-				tabla.append("<tr><td>"  + datos[i][rut] + "</td><td>" 
-									    + datos[i][nombre] + "</td><td>"
-									   	+ datos[i][apellido] + "</td><td>"
-									   	+ datos[i][correo] + "</td></tr>");
-				}
+					tabla.append("<tr><td>"  + datos[i][2] + "</td><td>" + datos[i][3] + "</td><td></tr>");
+				}	
+				
 			}, 
 			 error: function(jqXHR, exception) {
 	            if (jqXHR.status === 0) {
