@@ -16,6 +16,8 @@ $(document).ready(()=>{
 			let tabla = $("#tabla-ver");
 			let selectMod = $("#select-rut-modificar-clientes");
 			let selectElim = $("#select-rut-eliminar-clientes")
+			let selectPedi = $("#select-rut-pedido");
+
 
 			for(let i=0 ; i<datos.length ; i++){
 
@@ -25,8 +27,28 @@ $(document).ready(()=>{
 									   	+ datos[i][correo] + "</td></tr>");
 				selectMod.append("<option>" + datos[i][rut] +  "</option>");
 				selectElim.append("<option>" + datos[i][rut] +  "</option>");
+				selectPedi.append("<option>" + datos[i][rut] +  "</option>");
 			}
 		}
+	});
+
+	$("#btn-pedido-crear").click(()=>{
+
+		let rutP = $("#select-rut-pedido").val();
+		let fechaP = $("#input-pedido-fecha").val();
+		let totalP = $("#input-pedido-total").val();
+
+		$.ajax({
+
+			url: url_base + "api/Pedidos.php?peticion=crear&rut=" + rutP 
+						  + "&fecha=" + fechaP + "&total=" + totalP,
+			success: (res)=>{
+
+				alert("El Pedido ha sido añadido");
+			}
+
+		});
+
 	});
 
 	$("#btn-modificar").click(()=>{
