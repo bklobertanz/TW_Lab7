@@ -1,1 +1,14 @@
 *.sql
+api 
+d104
+dashboard 
+img 
+webalizer 
+xampp 
+.DS_Store 
+applications.html 
+bitname.css 
+favicon.ico
+index.bak.php 
+*.sql 
+

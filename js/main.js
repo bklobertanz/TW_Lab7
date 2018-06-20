@@ -29,19 +29,49 @@ $(document).ready(()=>{
 		}
 	});
 
-	$("#btn-modificar-clientes").click(()=>{
+	$("#btn-modificar").click(()=>{
 
-		let rut = $("#select-rut-modificar-clientes").val();
+		let rutS = $("#select-rut-modificar-clientes").val();
+		let nombreS = $("#input-modificar-nombre").val();
+		let apellidoS = $("#input-modificar-apellido").val();
+		let correoS = $("#input-modificar-correo").val();
 
 		$.ajax({
 
-			url: url_base + "api/Cliente.php?peticion=ver&rut=" + rut,
+
+			url: url_base + "api/Cliente.php?peticion=modificar&rut="+ rutS +"&nombre="
+						  + nombreS + "&apellido=" + apellidoS + "&correo=" + correoS,
+
+			success: (res)=>{
+
+				alert("Cliente modificado");
+			}
+		});
+	});
+	$("#btn-modificar-clientes").click(()=>{
+
+		let rutS = $("#select-rut-modificar-clientes").val();
+		$.ajax({
+
+			url: url_base + "api/Cliente.php?peticion=ver&rut=" + rutS,
 			type: 'GET',
 			dataType: 'json',
 			success:(res)=>{
 
-				console.log(res);
+					//res[0-1], 0:[0-3], 1: [0-1] pedidos del cliente.
 
+					let rutM = res[0][rut];
+					let nombreM = res[0][nombre];
+					let apellidoM = res[0][apellido];
+					let correoM = res[0][correo];
+
+					let inputNombre = $("#input-modificar-nombre");
+					let inputApellido = $("#input-modificar-apellido");
+					let inputCorreo = $("#input-modificar-correo");
+					
+					inputNombre.val(nombreM);
+					inputApellido.val(apellidoM);
+					inputCorreo.val(correoM);
 			},
 			error: function(jqXHR, exception) {
 	            if (jqXHR.status === 0) {
