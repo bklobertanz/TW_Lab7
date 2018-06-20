@@ -49,7 +49,6 @@ class Cliente
     }
 
     $informacion_usuario = array($row[0],$row[1],$row[2],$row[3]);
-    print_r($informacion_usuario);
 
     //segunda consulta por los hijos del cliente
     $query2  = "SELECT * FROM pedidos WHERE Rut ='".$rut."'";
@@ -66,7 +65,6 @@ class Cliente
 
 
     $informacion_hijos = $arrayresponse;
-    print_r($informacion_hijos);
     $array_respuesta = array($informacion_usuario,$informacion_hijos);
 
     return json_encode($array_respuesta);
