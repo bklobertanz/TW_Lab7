@@ -7,7 +7,7 @@ class Cliente
 {
   function __construct()
   {
-    
+
   }
 
   public function obtenerLista()
@@ -38,7 +38,7 @@ class Cliente
     if ($conn->connect_error) die($conn->connect_error);
 
     //primera consulta por los datos del cliente
-    $query  = "SELECT * FROM cliente WHERE Rut =".$rut;
+    $query  = "SELECT * FROM cliente WHERE Rut ='".$rut."'";
     $result = $conn->query($query);
     if (!$result) die ("Error al acceder a la base de datos :( ): " . $conn->error);
     $rows = $result->num_rows;
@@ -52,7 +52,7 @@ class Cliente
     print_r($informacion_usuario);
 
     //segunda consulta por los hijos del cliente
-    $query2  = "SELECT * FROM pedidos WHERE Rut =".$rut;
+    $query2  = "SELECT * FROM pedidos WHERE Rut ='".$rut."'";
     $result2 = $conn->query($query2);
     if (!$result) die ("Error al acceder a la base de datos :( ): " . $conn->error);
     $rows = $result2->num_rows;
@@ -97,7 +97,7 @@ class Cliente
     else{
       return "Error: ".$sql . " --".$conn->error;
     }
-  } 
+  }
 
   public function modificar($rut,$nombre,$apellido,$correo){
     $conn = new mysqli('localhost', 'root', '', 'Lab7');
