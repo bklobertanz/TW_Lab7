@@ -10,5 +10,5 @@ applications.html
 bitname.css 
 favicon.ico
 index.bak.php 
-*.sql 
+.gitignore
 
